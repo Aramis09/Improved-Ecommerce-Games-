@@ -1,0 +1,20 @@
+.container {
+  box-sizing: border-box;
+  z-index: 90;
+  position: absolute;
+  width: 100%;
+  top: 100%;
+  left: 0;
+  transform: translate(-150%);
+  transition: all 0.2s;
+  background-image: linear-gradient(to bottom right, black, rgb(15, 15, 86));
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  padding-inline: 20%;
+  p{
+    font-size: 0.7rem;
+    cursor: pointer;
+  }
+}

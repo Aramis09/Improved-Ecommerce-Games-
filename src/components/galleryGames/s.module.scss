@@ -1,0 +1,19 @@
+.container{
+  display: flex;
+  width: 1000px;
+  height: 430px;
+  img {
+    width: 0;
+    flex-grow: 1;
+    object-fit: cover;
+    opacity: 0.8;
+    transition: 0.5s ease;
+    border-radius: 0.1rem;
+  }
+  img:hover {
+    cursor: crosshair;
+    width: 300px;
+    opacity: 1;
+    filter: contrast(1.3);
+  }
+}

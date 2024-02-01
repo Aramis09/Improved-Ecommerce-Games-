@@ -1,0 +1,76 @@
+.container {
+  box-sizing: border-box;
+  width: 12rem;
+  background-image: linear-gradient(to bottom right, rgb(137, 28, 167), rgb(15, 15, 86));
+  border-radius: 0.5rem;
+  height: 17rem;
+  text-align: center;
+  cursor: pointer;
+  overflow: hidden;
+  box-shadow: 10px 10px 30px black;
+  position: relative;
+  h4{
+    font-weight: 100;
+    font-size: 1.1rem;
+    text-shadow: 1px  1px rgb(4, 0, 255);
+  }
+  *::-webkit-scrollbar{
+    display: none;
+    
+  }
+ 
+  img {
+    width: 100%;
+  }
+
+  .buttonAddGame{
+    background: black;
+    width: 100%;
+    height: 2rem;
+    border: none;
+    position: absolute;
+    bottom: 0rem;
+    left: 0;
+    transition: all 0.2s;
+
+  }
+  .buttonAddGame:hover{
+    transition: all 0.2s;
+    background: greenyellow;
+    color: black;
+    cursor: pointer;
+  }
+  .containerGenres{
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      gap: 1rem;
+      width: 100%;
+      background-color: black;
+      overflow: scroll;
+      animation: movimiento 5s linear infinite alternate;
+ 
+      p{
+        align-items: center;
+        white-space: nowrap;
+        text-align: center;
+        margin: 0;
+        padding: 0;
+        font-size: 0.7rem;
+      }
+  }
+  .price {
+    position: absolute;
+    top: 0.5em;
+    right: 0.5rem;
+    margin: 0;
+    color: black;
+    background-color: greenyellow;
+
+    padding: 0.1rem;
+    font-size: 0.8rem;
+    font-weight: 600;
+    border-radius: 0.3rem;
+  }
+}
