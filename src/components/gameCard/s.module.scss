@@ -2,13 +2,15 @@
   box-sizing: border-box;
   width: 12rem;
   background-image: linear-gradient(to bottom right, rgb(137, 28, 167), rgb(15, 15, 86));
-  border-radius: 0.5rem;
+  border-radius: 0.3rem;
   height: 17rem;
   text-align: center;
   cursor: pointer;
   overflow: hidden;
   box-shadow: 10px 10px 30px black;
   position: relative;
+  border: solid 3px rgba(0, 0, 0, 0.455);
+
   h4{
     font-weight: 100;
     font-size: 1.1rem;
@@ -23,23 +25,7 @@
     width: 100%;
   }
 
-  .buttonAddGame{
-    background: black;
-    width: 100%;
-    height: 2rem;
-    border: none;
-    position: absolute;
-    bottom: 0rem;
-    left: 0;
-    transition: all 0.2s;
-
-  }
-  .buttonAddGame:hover{
-    transition: all 0.2s;
-    background: greenyellow;
-    color: black;
-    cursor: pointer;
-  }
+ 
   .containerGenres{
       display: flex;
       flex-direction: row;
@@ -72,5 +58,45 @@
     font-size: 0.8rem;
     font-weight: 600;
     border-radius: 0.3rem;
+  }
+
+  .containerButtonAdd  {
+    .buttonAddGameCart,.buttonAddFavorite{
+      z-index: 40;
+      background: black;
+      width: 50%;
+      height: 2rem;
+      border: none;
+      position: absolute;
+      bottom: 0rem;
+      right: 0;
+      transition: all 0.2s;
+    }
+    .buttonAddGameCart{
+      .cartIcon{
+        width: 1.3rem;
+        height: 1.3rem;
+      }
+    }
+    .buttonAddFavorite{
+      background: black;
+      // background: #d40606df;
+      z-index: 30;
+      left: 0;
+      .favoriteIcon{
+        width: 1.3rem;
+        height: 1.3rem;
+        align-self: center;
+        fill: currentColor;
+        color: #ff0000;
+
+      }
+    }
+    .buttonAddGameCart:hover,.buttonAddFavorite:hover{
+      transition: all 0.2s;
+      background: greenyellow;
+      color: black;
+      cursor: pointer;
+    }
   }
 }

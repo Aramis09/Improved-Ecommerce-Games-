@@ -2,7 +2,9 @@ export interface ResponseGetListGames {
   pageNumber: number;
   data: GameDetail[];
 }
-
+export interface ResponseGetDetailGame {
+  data: GameDetail;
+}
 export interface GameDetail {
   id: number;
   name: string;
@@ -26,4 +28,9 @@ export interface Genre {
 
 export interface Image {
   image_path: string;
+}
+
+//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+export interface ResponseVerifyProduct {
+  data: boolean
 }

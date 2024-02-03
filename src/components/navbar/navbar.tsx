@@ -6,6 +6,7 @@ import Burger from "../../assets/svgs/burger.svg";
 import SubNavbar from "./subNavbar/subNavbar";
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import Menu from "../menu/menu";
 
 export default function Navbar() {
   const [showSubMenu, setShowSubMenu] = useState(false);
@@ -23,7 +24,7 @@ export default function Navbar() {
         />
         <Search />
       </div>
-      <Login />
+      <Menu />
       <SubNavbar show={showSubMenu} />
     </div>
   );

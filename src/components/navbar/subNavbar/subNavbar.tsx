@@ -13,7 +13,7 @@ export default function SubNavbar({ show }: Props) {
       <Link to="/library">Library</Link>
       <Link to="/wish">Wish</Link>
       <Link to="/friends">Friends</Link>
-      <Link to="/carrito">Carrito</Link>
+      <Link to="/checkout">Carrito</Link>
     </div>
   );
 }

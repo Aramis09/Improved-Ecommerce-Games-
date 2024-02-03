@@ -15,9 +15,6 @@ export function useMakeRequest<T>({ url }: Params) {
       .then(res => res.json())
       .then(res => setResult(res))
       .catch(err => setErr(err));
-    console.log("entreee");
-    console.log(urlSent);
-
   }, [url, urlSent])
 
   return { result, setResult, err, setUrlSent }

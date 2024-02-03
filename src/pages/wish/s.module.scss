@@ -1,0 +1,34 @@
+.container {
+  box-sizing: border-box;
+  padding-block: 8rem;
+  width: 60%;
+  margin: 0 auto;
+  height: 100%;
+  background-color: black;
+  border-radius: 0.3rem;
+}
+
+
+
+.containerItem{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  gap: 5rem;
+  margin-block: 1rem;
+  align-items: center;
+   h5, p{
+    width: 5rem;
+  }
+  .containerImage{
+    width: 10rem;
+    height: 10rem;
+    overflow: hidden;
+    border-radius: 100%;
+
+  }
+  img {
+    width: 14rem;
+    height: 10rem;
+  }
+}

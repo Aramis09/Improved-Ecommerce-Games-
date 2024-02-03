@@ -1,4 +1,6 @@
 .container{
+  z-index: 25;
+  max-height: 3.5rem;
   box-sizing: border-box;
   background-color: black;
   width: 16rem;
@@ -6,15 +8,19 @@
   position: absolute;
   right: 2rem;
   top: 5rem;
-  padding: 2rem;
+  padding-inline: 2rem;
+  padding-block: 1rem;
   text-align: center;
   border: 2px solid rgb(81, 127, 11);
   box-shadow: 5px 5px 20px greenyellow;
   overflow: hidden;
+  cursor: pointer;
   h4 {
     color: greenyellow;
-  }
-  
+    margin: 0;
+    margin-bottom: 2rem;
+  } 
+
   .itemList{
     display: flex;
     justify-content: space-between;
@@ -45,8 +51,12 @@
     justify-content: center;
     align-items: center;
     cursor: pointer;    
-  }
- 
-  transition: all 0.2s;
-
+  }  
+  transition:all 0.2s ;
 }
+
+.container:hover {
+  max-height: 30rem;
+  transition:all 0.2s ;
+}
+

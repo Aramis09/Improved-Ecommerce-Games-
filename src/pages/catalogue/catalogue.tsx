@@ -4,6 +4,7 @@ import { ResponseGetListGames } from "../../interfaces/interfaces";
 import GameCard from "../../components/gameCard/gameCard";
 import Pagination from "../../components/pagination/pagination";
 import { urlFormated } from "../../utils/urlFormated";
+import useLoaderManage from "../../customHooks/useLoader";
 
 const URLGETGAMES = `${
   import.meta.env.VITE_SOME_BASE_URL
@@ -13,8 +14,10 @@ export default function Catalogue() {
   const { result, setUrlSent } = useMakeRequest<ResponseGetListGames>({
     url: URLGETGAMES,
   });
+  const { setLoaderStatus, LoaderAllViewport } = useLoaderManage({});
 
   const hanlderChangePage = async (pageNumber: string) => {
+    setLoaderStatus(true);
     const url = urlFormated({ pageNumber: pageNumber });
     setUrlSent(url);
   };
@@ -26,6 +29,7 @@ export default function Catalogue() {
           <GameCard gameDetail={gameDetail} />
         ))}
         <Pagination onClick={hanlderChangePage} />
+        {LoaderAllViewport}
       </div>
     </div>
   );

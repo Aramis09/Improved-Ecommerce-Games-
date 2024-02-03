@@ -48,7 +48,10 @@ body {
   animation: movimiento 5s linear infinite alternate;
   
 }
+*{
+  box-sizing: border-box;
 
+}
 @keyframes movimiento {
   from {
     background-position: 0,0;

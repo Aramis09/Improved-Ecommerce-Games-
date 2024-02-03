@@ -1,14 +1,19 @@
-import { useAuth0 } from "@auth0/auth0-react";
 import s from "./s.module.scss";
+import useManagmentUser from "../../customHooks/useManagmentUser";
+
 export default function Login() {
-  const { loginWithRedirect, logout, isAuthenticated, getAccessTokenSilently } =
-    useAuth0();
+  const {
+    reloadVerifyUserRegisterF,
+    isAuthenticated,
+    loginWithRedirect,
+    logout,
+  } = useManagmentUser();
 
   return !isAuthenticated ? (
     <button
       className={s.container}
       onClick={async () => {
-        loginWithRedirect();
+        loginWithRedirect().then(() => reloadVerifyUserRegisterF());
       }}
     >
       Login
