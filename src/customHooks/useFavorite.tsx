@@ -12,7 +12,6 @@ const baseUrl = `${import.meta.env.VITE_SOME_BASE_URL}`;
 export default function useFavorite({ idGame }: Props) {
   const { user, loginWithPopup } = useAuth0();
   const [isFavorite, setIsFavorite] = useState<boolean>();
-  console.log(isFavorite);
 
   const addGameToFavorite = useCallback(
     async (idGame: string | number | undefined) => {
@@ -94,14 +93,13 @@ export default function useFavorite({ idGame }: Props) {
   // };
 
   useEffect(() => {
-    if (isFavorite === undefined) {
+    if (isFavorite === undefined && idGame && user) {
       //! this is run when the component is mounted and define the first status
-      idGame &&
-        isGameFavoriteFunction(idGame).then((res) => {
-          setIsFavorite(res);
-        });
+      isGameFavoriteFunction(idGame).then((res) => {
+        setIsFavorite(res);
+      });
     }
-  }, [idGame, isFavorite, isGameFavoriteFunction]);
+  }, [idGame, isFavorite, isGameFavoriteFunction, user]);
 
   return {
     addGameToFavorite,
