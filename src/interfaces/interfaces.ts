@@ -5,6 +5,7 @@ export interface ResponseGetListGames {
 export interface ResponseGetDetailGame {
   data: GameDetail;
 }
+
 export interface GameDetail {
   id: number;
   name: string;
@@ -33,4 +34,19 @@ export interface Image {
 //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 export interface ResponseVerifyProduct {
   data: boolean
+}
+
+
+export interface ResponseGetUser {
+  data: UserDb[]
+}
+
+export interface UserDb {
+  name: string;
+  image: string;
+  id: string;
+  email: string;
+  admin: boolean;
+  blocked: boolean;
+  secret: null;
 }

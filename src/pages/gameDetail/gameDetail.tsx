@@ -4,11 +4,15 @@ import { useMakeRequest } from "../../customHooks/useMakeRequest";
 import GalleryGames from "../../components/galleryGames/galleryGames";
 import { ResponseGetDetailGame } from "../../interfaces/interfaces";
 import Comments from "../../components/comments/comments";
+import useFavorite from "../../customHooks/useFavorite";
 
 export default function GameDetail() {
   const { pathname } = useLocation();
   const url = buildUrlToGetDetail({ pathname });
   const { result } = useMakeRequest<ResponseGetDetailGame>({ url });
+  const { switchActionAddAndRemove, isFavorite } = useFavorite({
+    idGame: result?.data.id,
+  });
   const images = result?.data.Images.map((objImg) => objImg.image_path);
 
   return (
@@ -27,7 +31,9 @@ export default function GameDetail() {
         </div>
       </div>
       <div className={s.buttonsContainer}>
-        <button className={s.addFav}>Add To Favorites</button>
+        <button className={s.addFav} onClick={switchActionAddAndRemove}>
+          {isFavorite ? "Remove From Favorite" : "Add To Favorites"}
+        </button>
         <button className={s.addCart}>Add To Cart</button>
       </div>
 

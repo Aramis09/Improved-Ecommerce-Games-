@@ -52,6 +52,8 @@ body {
   box-sizing: border-box;
 
 }
+
+
 @keyframes movimiento {
   from {
     background-position: 0,0;

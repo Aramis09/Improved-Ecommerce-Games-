@@ -4,6 +4,7 @@ import { useMakeRequest } from "../../customHooks/useMakeRequest";
 import { ResponseGetListGames } from "../../interfaces/interfaces";
 import { Link } from "react-router-dom";
 import GalleryGames from "../../components/galleryGames/galleryGames";
+import { useGetGamesListQuery } from "../../redux/services/gamesApi";
 
 const URLGETPOPUILARGAMES = `${
   import.meta.env.VITE_SOME_BASE_URL
@@ -13,6 +14,8 @@ export default function Home() {
   const { result } = useMakeRequest<ResponseGetListGames>({
     url: URLGETPOPUILARGAMES,
   });
+
+  // const { data,isError,isLoading,isSuccess } = useGetGamesListQuery({});
 
   return result?.pageNumber ? (
     <>

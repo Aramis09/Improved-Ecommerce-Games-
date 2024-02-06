@@ -4,6 +4,7 @@ import { Auth0Provider } from "@auth0/auth0-react";
 import "./index.css";
 import { BrowserRouter } from "react-router-dom";
 import App from "./App";
+import ProviderRedux from "./redux/provider";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <Auth0Provider
@@ -14,9 +15,11 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
     }}
   >
     <React.StrictMode>
-      <BrowserRouter>
-        <App />
-      </BrowserRouter>
+      <ProviderRedux>
+        <BrowserRouter>
+          <App />
+        </BrowserRouter>
+      </ProviderRedux>
     </React.StrictMode>
   </Auth0Provider>
 );
