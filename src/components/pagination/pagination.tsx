@@ -44,6 +44,7 @@ export default function Pagination<T>({ onClick }: Props<T>) {
 
       {numberPages.map((number) => (
         <button
+          key={Math.random()}
           onClick={() => {
             setSelected(number);
             onClick(String(number));

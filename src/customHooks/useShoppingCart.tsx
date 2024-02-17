@@ -1,57 +1,65 @@
 import { useAuth0 } from "@auth0/auth0-react";
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import { ResponseVerifyProduct } from "../interfaces/interfaces";
 import { CartIconAdd, CartIconAdded } from "../assets/svgs/cart";
+import {
+  BodyDataSppCart,
+  useAddGameSoppingCartMutation,
+  useDeleteGameSoppingCartMutation,
+  useGetGamesFromSppCartQuery,
+} from "../redux/services/gamesApi";
 const baseUrl = `${import.meta.env.VITE_SOME_BASE_URL}`;
 //!tengo que transformar esto a shoppingCart
 
 interface Props {
-  idGame: string | number | undefined;
+  idGame?: string | number | undefined;
 }
 
 export default function useShoppingCart({ idGame }: Props) {
   const { user, loginWithPopup } = useAuth0();
   const [isAddedToCart, setIsAddedToCart] = useState<boolean>();
+  const [addGameToCart] = useAddGameSoppingCartMutation();
+  const [removeGameToCart] = useDeleteGameSoppingCartMutation();
+
+  const { data: gamesFromSppCart } = useGetGamesFromSppCartQuery({
+    id: user?.sub,
+  });
+
+  const totalToPay = useMemo(() => {
+    if (gamesFromSppCart?.data) {
+      return gamesFromSppCart?.data
+        .reduce((accumulator, game) => accumulator + Number(game.price), 0)
+        .toFixed(2);
+      return 0;
+    }
+  }, [gamesFromSppCart]);
 
   const addGameShoppingCart = useCallback(
     async (idGame: string | number | undefined) => {
       if (user) {
-        const body = {
-          idGame,
-          idUser: user?.sub,
+        const body: BodyDataSppCart = {
+          idGame: idGame || null,
+          idUser: user?.sub || null,
         };
-        const url = baseUrl + "/shoppingCart/add";
-        await fetch(url, {
-          method: "post",
-          body: JSON.stringify(body),
-          headers: {
-            "Content-Type": "application/json",
-          },
-        });
+
+        addGameToCart(body);
         setIsAddedToCart(true);
       }
     },
-    [user]
+    [user, addGameToCart]
   );
   const deleteGameShoppingCart = useCallback(
     async (idGame: string | number | undefined) => {
       if (user) {
-        const body = {
-          idGame,
-          idUser: user?.sub,
+        const body: BodyDataSppCart = {
+          idGame: idGame || null,
+          idUser: user?.sub || null,
         };
-        const url = baseUrl + "/shoppingCart/delete";
-        await fetch(url, {
-          method: "delete",
-          body: JSON.stringify(body),
-          headers: {
-            "Content-Type": "application/json",
-          },
-        });
+        removeGameToCart(body);
         setIsAddedToCart(false);
       }
     },
-    [user]
+    [user, removeGameToCart]
   );
 
   const isGameShoppingCartFunction = useCallback(
@@ -102,5 +110,7 @@ export default function useShoppingCart({ idGame }: Props) {
     isAddedToCart,
     switchActionAddAndRemove,
     switchIcon,
+    gamesFromSppCart,
+    totalToPay,
   };
 }

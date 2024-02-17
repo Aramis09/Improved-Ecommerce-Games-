@@ -6,7 +6,11 @@ export default function Comments() {
   return (
     <div className={s.container}>
       <textarea placeholder="Write your comment..." />
-      <div className={s.containerList}>{arr.map((c) => c)}</div>
+      <div className={s.containerList}>
+        {arr.map((c) => (
+          <div key={Math.random()}>{c}</div>
+        ))}
+      </div>
     </div>
   );
 }

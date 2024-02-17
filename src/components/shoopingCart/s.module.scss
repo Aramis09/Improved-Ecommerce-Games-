@@ -14,6 +14,7 @@
   border: 2px solid rgb(81, 127, 11);
   box-shadow: 5px 5px 20px greenyellow;
   overflow: hidden;
+
   cursor: pointer;
   h4 {
     color: greenyellow;
@@ -56,7 +57,8 @@
 }
 
 .container:hover {
-  max-height: 30rem;
+  max-height: 60rem;
   transition:all 0.2s ;
+  
 }
 

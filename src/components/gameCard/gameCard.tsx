@@ -8,6 +8,7 @@ interface Props {
   gameDetail: GameDetail;
 }
 const colors = ["green", "red", "blue", "violet"];
+
 export default function GameCard({ gameDetail }: Props) {
   const { switchActionAddAndRemove, switchIcon } = useFavorite({
     idGame: gameDetail.id,

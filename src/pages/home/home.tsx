@@ -11,18 +11,20 @@ const URLGETPOPUILARGAMES = `${
 }/games/list?quantityResult=6&orderRating=ASC`;
 
 export default function Home() {
-  const { result } = useMakeRequest<ResponseGetListGames>({
-    url: URLGETPOPUILARGAMES,
-  });
+  // const { result } = useMakeRequest<ResponseGetListGames>({
+  //   url: URLGETPOPUILARGAMES,
+  // });
 
-  // const { data,isError,isLoading,isSuccess } = useGetGamesListQuery({});
+  const { data, isError, isLoading, isSuccess } = useGetGamesListQuery(
+    "/games/list?quantityResult=6&orderRating=ASC"
+  );
 
-  return result?.pageNumber ? (
+  return isSuccess ? (
     <>
       <div className={s.container}>
-        <GalleryGames games={result?.data} width={"80%"} />
+        <GalleryGames games={data?.data} width={"80%"} />
         <div className={s.containerListGames}>
-          {result?.data.map((gameDetail) => (
+          {data?.data.map((gameDetail) => (
             <GameCard gameDetail={gameDetail} key={Math.random()} />
           ))}
         </div>

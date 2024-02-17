@@ -5,6 +5,7 @@ import GalleryGames from "../../components/galleryGames/galleryGames";
 import { ResponseGetDetailGame } from "../../interfaces/interfaces";
 import Comments from "../../components/comments/comments";
 import useFavorite from "../../customHooks/useFavorite";
+import useShoppingCart from "../../customHooks/useShoppingCart";
 
 export default function GameDetail() {
   const { pathname } = useLocation();
@@ -13,6 +14,8 @@ export default function GameDetail() {
   const { switchActionAddAndRemove, isFavorite } = useFavorite({
     idGame: result?.data.id,
   });
+  const { isAddedToCart, switchActionAddAndRemove: switchAddAndRemoveCart } =
+    useShoppingCart({ idGame: result?.data.id });
   const images = result?.data.Images.map((objImg) => objImg.image_path);
 
   return (
@@ -26,7 +29,7 @@ export default function GameDetail() {
         <p>{result?.data.description}</p>
         <div className={s.genres}>
           {result?.data.Genres.map((genre) => (
-            <p>{genre.name}</p>
+            <p key={Math.random()}>{genre.name}</p>
           ))}
         </div>
       </div>
@@ -34,7 +37,9 @@ export default function GameDetail() {
         <button className={s.addFav} onClick={switchActionAddAndRemove}>
           {isFavorite ? "Remove From Favorite" : "Add To Favorites"}
         </button>
-        <button className={s.addCart}>Add To Cart</button>
+        <button className={s.addCart} onClick={switchAddAndRemoveCart}>
+          {isAddedToCart ? "Remove From Cart" : "Add To Cart"}
+        </button>
       </div>
 
       <div className={s.comments}>
